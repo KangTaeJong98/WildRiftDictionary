@@ -4,4 +4,6 @@
     <string name="news">소식</string>
     <string name="youtube">YouTube</string>
     <string name="image">Image</string>
+    <string name="champion">Champion</string>
+    <string name="main">Main</string>
 </resources>

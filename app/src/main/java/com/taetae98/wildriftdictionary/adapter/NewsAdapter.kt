@@ -3,8 +3,6 @@ package com.taetae98.wildriftdictionary.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.ViewDataBinding
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.findFragment
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import com.taetae98.wildriftdictionary.R
@@ -12,7 +10,6 @@ import com.taetae98.wildriftdictionary.base.BaseAdapter
 import com.taetae98.wildriftdictionary.base.BaseHolder
 import com.taetae98.wildriftdictionary.data.News
 import com.taetae98.wildriftdictionary.databinding.HolderNewsBinding
-import com.taetae98.wildriftdictionary.fragment.MainFragment
 import com.taetae98.wildriftdictionary.fragment.MainFragmentDirections
 
 class NewsAdapter : BaseAdapter<News>(NewsItemCallback()) {
@@ -27,9 +24,7 @@ class NewsAdapter : BaseAdapter<News>(NewsItemCallback()) {
     inner class SpecialNewsHolder(binding: HolderNewsBinding) : BaseHolder<HolderNewsBinding, News>(binding) {
         init {
             binding.setOnClick {
-                if (it.findFragment<Fragment>() is MainFragment) {
-                    it.findNavController().navigate(MainFragmentDirections.actionMainFragmentToWebViewFragment(element.url))
-                }
+                it.findNavController().navigate(MainFragmentDirections.actionMainFragmentToWebViewFragment(element.url))
             }
         }
 

@@ -23,4 +23,9 @@
             android:name="url"
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/championFragment"
+        android:name="com.taetae98.wildriftdictionary.fragment.ChampionFragment"
+        android:label="ChampionFragment"
+        tools:layout="@layout/fragment_champion"/>
 </navigation>
