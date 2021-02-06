@@ -28,15 +28,15 @@ class NewsData private constructor() {
         }
     }
 
-    val specialNews by lazy {
+    val news by lazy {
         try {
             ArrayList<News>().apply {
-                document.getElementsByClass("newsCard-1JDzV").forEach {
-                    val imageURL = it.attr("style").replaceBefore("http", "").replaceAfter("jpg", "")
-                    val title = try { it.getElementsByClass("title-2S683").first().text() } catch (e: Exception) { e.printStackTrace(); "" }
-                    val description = try { it.getElementsByClass("category-1T7h7").first().text() } catch (e: Exception) { e.printStackTrace(); "" }
+                document.getElementsByClass("articleCardWrapper-1JIOy").forEach {
+                    val imageURL = try { it.getElementsByClass("image-NeGf2").first().attr("src") } catch (e: Exception) { e.printStackTrace(); "" }
+                    val title = try { it.getElementsByClass("title--HVLV").first().text() } catch (e: Exception) { e.printStackTrace(); "" }
+                    val url = it.attr("href")
 
-                    add(News(imageURL, title, description, type = News.Type.SPECIAL))
+                    add(News(imageURL, title, url))
                 }
             }
         } catch (e: Exception) {
