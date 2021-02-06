@@ -31,6 +31,44 @@ class ChampionData private constructor() {
     }
 
     val champions by lazy {
+        val map = try {
+            HashMap<String, List<Champion.Line>>().apply {
+                runBlocking(Dispatchers.IO) {
+                    Jsoup.connect("https://poro.gg/champions").get().getElementsByClass("champion-list__item").forEach {
+                        val nameKr = it.getElementsByClass("champion-list__item__name").first().text()
+                        val lines = it.attr("data-positions").split(",").map { line ->
+                            when(line) {
+                                "top" -> {
+                                    Champion.Line.TOP
+                                }
+                                "jng" -> {
+                                    Champion.Line.JUNGLE
+                                }
+                                "mid" -> {
+                                    Champion.Line.MID
+                                }
+                                "adc" -> {
+                                    Champion.Line.BOT
+                                }
+                                "sup" -> {
+                                    Champion.Line.SUPPORTER
+                                }
+                                else ->  {
+                                    Champion.Line.NONE
+                                }
+                            }
+                        }
+
+                        Log.d("PASS", "$nameKr : $lines")
+                        put(nameKr, lines)
+                    }
+                }
+            }
+        } catch (e: Exception) {
+            Log.d("PASS", e.toString())
+            mapOf()
+        }
+        Log.d("PASS", map.toString())
         try {
             HashMap<String, Champion>().apply {
                 document.getElementsByClass("wildrift-box__content").first().children().forEach {
@@ -43,8 +81,7 @@ class ChampionData private constructor() {
                     val headerImageURL = "https://poro.gg/images/lol/champion/splash-modified/$nameEn.jpg"
                     val splashImageURL = "http://ddragon.leagueoflegends.com/cdn/img/champion/splash/${nameEn}_0.jpg"
 
-                    Log.d("PASS", Champion(nameKr, nameEn, imageURL, headerImageURL, splashImageURL, informationURL).toString())
-                    put(nameEn, Champion(nameKr, nameEn, imageURL, headerImageURL, splashImageURL, informationURL))
+                    put(nameKr, Champion(nameKr, nameEn, imageURL, headerImageURL, splashImageURL, informationURL, map.getOrDefault(nameKr, emptyList())))
                 }
             }
         } catch (e: Exception) {
