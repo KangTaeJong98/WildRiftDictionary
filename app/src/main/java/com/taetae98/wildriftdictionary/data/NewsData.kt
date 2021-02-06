@@ -34,7 +34,13 @@ class NewsData private constructor() {
                 document.getElementsByClass("articleCardWrapper-1JIOy").forEach {
                     val imageURL = try { it.getElementsByClass("image-NeGf2").first().attr("src") } catch (e: Exception) { e.printStackTrace(); "" }
                     val title = try { it.getElementsByClass("title--HVLV").first().text() } catch (e: Exception) { e.printStackTrace(); "" }
-                    val url = it.attr("href")
+                    val url = it.attr("href").run {
+                        return@run if (!contains("https")) {
+                            "https://wildrift.leagueoflegends.com$this"
+                        } else {
+                            this
+                        }
+                    }
 
                     add(News(imageURL, title, url))
                 }

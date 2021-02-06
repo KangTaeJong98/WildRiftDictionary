@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">WildRiftDictionary</string>
+    <string name="app_name">와일드 리프트 백과사전</string>
+    <string name="special_news">특별 소식</string>
+    <string name="news">소식</string>
+    <string name="youtube">YouTube</string>
+    <string name="image">Image</string>
 </resources>
