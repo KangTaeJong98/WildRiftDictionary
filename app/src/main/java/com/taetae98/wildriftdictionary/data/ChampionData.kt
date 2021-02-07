@@ -1,5 +1,6 @@
 package com.taetae98.wildriftdictionary.data
 
+import android.util.Log
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
 import org.jsoup.Jsoup
@@ -79,7 +80,9 @@ class ChampionData private constructor() {
                     val headerImageURL = "https://poro.gg/images/lol/champion/splash-modified/$nameEn.jpg"
                     val splashImageURL = "http://ddragon.leagueoflegends.com/cdn/img/champion/splash/${nameEn}_0.jpg"
 
-                    put(nameKr, Champion(nameKr, nameEn, imageURL, headerImageURL, splashImageURL, informationURL, map.getOrDefault(nameKr, emptyList())))
+                    put(nameKr, Champion(nameKr, nameEn, imageURL, headerImageURL, splashImageURL, informationURL, map.getOrDefault(nameKr, emptyList())).also { champion ->
+                        Log.d("PASS", champion.toString())
+                    })
                 }
             }
         } catch (e: Exception) {

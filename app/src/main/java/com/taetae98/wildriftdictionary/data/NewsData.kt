@@ -1,5 +1,6 @@
 package com.taetae98.wildriftdictionary.data
 
+import android.util.Log
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
 import org.jsoup.Jsoup
@@ -42,7 +43,9 @@ class NewsData private constructor() {
                         }
                     }
 
-                    add(News(imageURL, title, url))
+                    add(News(imageURL, title, url).also { news ->
+                        Log.d("PASS", news.toString())
+                    })
                 }
             }
         } catch (e: Exception) {
