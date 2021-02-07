@@ -10,6 +10,10 @@ import com.taetae98.wildriftdictionary.data.Item
 import com.taetae98.wildriftdictionary.databinding.HolderItemBinding
 
 class ItemAdapter : BaseAdapter<Item>(ItemItemCallback()) {
+    init {
+        setHasStableIds(true)
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseHolder<out ViewDataBinding, Item> {
         return ItemHolder(HolderItemBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }

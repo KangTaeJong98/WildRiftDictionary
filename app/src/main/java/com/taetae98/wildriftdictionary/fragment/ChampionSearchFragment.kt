@@ -9,7 +9,7 @@ import com.taetae98.wildriftdictionary.databinding.FragmentChampionSearchBinding
 import java.util.*
 
 class ChampionSearchFragment : BaseFragment<FragmentChampionSearchBinding>(R.layout.fragment_champion_search) {
-    private val championAdapter by lazy { ChampionAdapter().apply { submitList(ChampionData.getInstance().champions.values.toMutableList().apply { sortBy { it.nameKr } }) } }
+    private val championAdapter by lazy { ChampionAdapter().apply { submitList(ChampionData.getInstance().champions.values.toMutableList().apply { sortBy { it.nameLocale } }) } }
 
     override fun init() {
         super.init()
@@ -29,10 +29,10 @@ class ChampionSearchFragment : BaseFragment<FragmentChampionSearchBinding>(R.lay
                     championAdapter.submitList(ChampionData.getInstance().champions.values.
                     filter { champion ->
                         champion.nameEn.toLowerCase(Locale.ROOT).contains(it.toString().toLowerCase(Locale.ROOT)) ||
-                                champion.nameKr.contains(it)
+                                champion.nameLocale.contains(it)
                     }.toMutableList().apply {
                         sortBy { champion ->
-                            champion.nameKr
+                            champion.nameLocale
                         }
                     })
                 }

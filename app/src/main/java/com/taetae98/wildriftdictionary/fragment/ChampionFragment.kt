@@ -28,7 +28,7 @@ class ChampionFragment : BaseFragment<FragmentChampionBinding>(R.layout.fragment
         private const val SUPPORTER = BOT + 1
     }
 
-    private val championList by lazy { ChampionData.getInstance().champions.values.toMutableList().apply { sortBy { it.nameKr } } }
+    private val championList by lazy { ChampionData.getInstance().champions.values.toMutableList().apply { sortBy { it.nameLocale } } }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)

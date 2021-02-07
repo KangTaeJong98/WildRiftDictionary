@@ -13,12 +13,20 @@ import com.taetae98.wildriftdictionary.data.Champion
 import com.taetae98.wildriftdictionary.databinding.HolderChampionBinding
 
 class ChampionAdapter : BaseAdapter<Champion>(ChampionItemCallback()) {
+    init {
+        setHasStableIds(true)
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseHolder<out ViewDataBinding, Champion> {
         return ChampionHolder(HolderChampionBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
 
     override fun getItemViewType(position: Int): Int {
         return R.layout.holder_champion
+    }
+
+    override fun getItemId(position: Int): Long {
+        return getItem(position).nameEn.hashCode().toLong()
     }
 
     inner class ChampionHolder(binding: HolderChampionBinding) : BaseHolder<HolderChampionBinding, Champion>(binding) {

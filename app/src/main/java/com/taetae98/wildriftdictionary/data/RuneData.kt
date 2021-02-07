@@ -1,6 +1,7 @@
 package com.taetae98.wildriftdictionary.data
 
 import android.util.Log
+import com.taetae98.wildriftdictionary.singleton.LocaleManager
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
 import org.jsoup.Jsoup
@@ -18,7 +19,7 @@ class RuneData private constructor() {
         }
     }
 
-    private val document by lazy { runBlocking(Dispatchers.IO) { try { Jsoup.connect("https://poro.gg/wildrift/runes").get() } catch (e: Exception) { e.printStackTrace(); Jsoup.parse("") } } }
+    private val document by lazy { runBlocking(Dispatchers.IO) { try { Jsoup.connect("https://poro.gg/wildrift/runes?hl=${LocaleManager.getPoroGGLocale()}").get() } catch (e: Exception) { e.printStackTrace(); Jsoup.parse("") } } }
 
     val runes: List<Rune> by lazy {
         try {
@@ -50,27 +51,27 @@ class RuneData private constructor() {
                     try {
                         it.getElementsByClass("wildrift-runes__group__content").first().child(0).children().forEach { runeElement ->
                             val imageURL = try {
-                                runeElement.child(0).child(0).attr("src")
+                                runeElement.child(0).child(0).attr("src").trim()
                             } catch (e: Exception) {
                                 e.printStackTrace()
                                 ""
                             }
                             val name = try {
-                                runeElement.child(0).child(1).text()
+                                runeElement.child(0).child(1).text().trim()
                             } catch (e: Exception) {
                                 e.printStackTrace()
                                 ""
                             }
 
                             val ability = try {
-                                runeElement.child(1).text()
+                                runeElement.child(1).text().trim()
                             } catch (e: Exception) {
                                 e.printStackTrace()
                                 ""
                             }
 
                             val description = try {
-                                runeElement.child(2).text()
+                                runeElement.child(2).text().trim()
                             } catch (e: Exception) {
                                 e.printStackTrace()
                                 ""

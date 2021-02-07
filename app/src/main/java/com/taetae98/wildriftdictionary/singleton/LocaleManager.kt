@@ -1,9 +1,9 @@
-package com.taetae98.wildriftdictionary.singleont
+package com.taetae98.wildriftdictionary.singleton
 
 import java.util.*
 
-object LocalManager {
-    fun getLocale(): Locale {
+object LocaleManager {
+    private fun getLocale(): Locale {
         return when(Locale.getDefault()) {
             Locale.KOREAN, Locale.KOREA -> {
                 Locale.KOREA
@@ -28,13 +28,27 @@ object LocalManager {
         }
     }
 
-    fun getRiotLocale(): String {
+    fun getLoLLocale(): String {
         return when(getLocale()) {
             Locale.KOREA -> {
                 "ko_KR"
             }
             Locale.US -> {
                 "en_US"
+            }
+            else -> {
+                throw IllegalStateException()
+            }
+        }
+    }
+
+    fun getWildRiftLocale(): String {
+        return when(getLocale()) {
+            Locale.KOREA -> {
+                "ko-kr"
+            }
+            Locale.US -> {
+                "en-us"
             }
             else -> {
                 throw IllegalStateException()

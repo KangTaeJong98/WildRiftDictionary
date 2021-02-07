@@ -1,6 +1,7 @@
 package com.taetae98.wildriftdictionary.data
 
 import android.util.Log
+import com.taetae98.wildriftdictionary.singleton.LocaleManager
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
 import org.jsoup.Jsoup
@@ -18,7 +19,7 @@ class ItemData private constructor() {
         }
     }
 
-    private val document by lazy { runBlocking(Dispatchers.IO) { try { Jsoup.connect("https://poro.gg/wildrift/items").get() } catch (e: Exception) { e.printStackTrace(); Jsoup.parse("") } } }
+    private val document by lazy { runBlocking(Dispatchers.IO) { try { Jsoup.connect("https://poro.gg/wildrift/items?hl=${LocaleManager.getPoroGGLocale()}").get() } catch (e: Exception) { e.printStackTrace(); Jsoup.parse("") } } }
 
     val items: List<Item> by lazy {
         try {
@@ -72,14 +73,14 @@ class ItemData private constructor() {
 
                     try {
                         it.getElementsByClass("wildrift-items__box__content").first().child(0).children().forEach { itemElement ->
-                            val imageURL = try { itemElement.child(0).attr("src") } catch (e: Exception) { e.printStackTrace(); "" }
-                            val name = try { itemElement.child(0).attr("alt") } catch (e: Exception) { e.printStackTrace(); "" }
+                            val imageURL = try { itemElement.child(0).attr("src").trim() } catch (e: Exception) { e.printStackTrace(); "" }
+                            val name = try { itemElement.child(0).attr("alt").trim() } catch (e: Exception) { e.printStackTrace(); "" }
 
                             val informationElement = try { Jsoup.parse(itemElement.child(0).attr("title")) } catch (e: Exception) { e.printStackTrace(); Jsoup.parse("") }
 
-                            val cost = try { informationElement.getElementsByClass("wdr-tooltip__item__info").first().child(1).text() } catch (e: Exception) { e.printStackTrace(); "" }
-                            val ability = try { informationElement.getElementsByClass("wdr-tooltip__stats").text() } catch (e: Exception) { e.printStackTrace(); "" }
-                            val description = try { informationElement.getElementsByClass("wdr-tooltip__description").text() } catch (e: Exception) { e.printStackTrace(); "" }
+                            val cost = try { informationElement.getElementsByClass("wdr-tooltip__item__info").first().child(1).text().trim() } catch (e: Exception) { e.printStackTrace(); "" }
+                            val ability = try { informationElement.getElementsByClass("wdr-tooltip__stats").text().trim() } catch (e: Exception) { e.printStackTrace(); "" }
+                            val description = try { informationElement.getElementsByClass("wdr-tooltip__description").text().trim() } catch (e: Exception) { e.printStackTrace(); "" }
 
                             add(Item(imageURL, name, cost, ability, description, type, level).also { item -> Log.d("PASS", item.toString()) })
                         }

@@ -10,8 +10,16 @@ import com.taetae98.wildriftdictionary.data.Skill
 import com.taetae98.wildriftdictionary.databinding.HolderSkillBinding
 
 class SkillAdapter : BaseAdapter<Skill>(SkillItemCallback()) {
+    init {
+        setHasStableIds(true)
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseHolder<out ViewDataBinding, Skill> {
         return SkillHolder(HolderSkillBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+    }
+
+    override fun getItemId(position: Int): Long {
+        return getItem(position).name.hashCode().toLong()
     }
 
     class SkillHolder(binding: HolderSkillBinding) : BaseHolder<HolderSkillBinding, Skill>(binding) {

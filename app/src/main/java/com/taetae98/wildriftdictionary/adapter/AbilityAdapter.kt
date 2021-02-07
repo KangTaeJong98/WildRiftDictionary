@@ -7,22 +7,22 @@ import androidx.recyclerview.widget.DiffUtil
 import com.taetae98.wildriftdictionary.R
 import com.taetae98.wildriftdictionary.base.BaseAdapter
 import com.taetae98.wildriftdictionary.base.BaseHolder
-import com.taetae98.wildriftdictionary.data.Ability
+import com.taetae98.wildriftdictionary.data.Champion
 import com.taetae98.wildriftdictionary.databinding.HolderAbilityBinding
 import com.taetae98.wildriftdictionary.databinding.HolderSubAbilityBinding
 
-class AbilityAdapter : BaseAdapter<Ability>(AbilityItemCallback()) {
+class AbilityAdapter : BaseAdapter<Champion.Ability>(AbilityItemCallback()) {
     init {
         setHasStableIds(true)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseHolder<out ViewDataBinding, Ability> {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseHolder<out ViewDataBinding, Champion.Ability> {
         return when(viewType) {
             R.layout.holder_ability -> {
                 AbilityHolder(HolderAbilityBinding.inflate(LayoutInflater.from(parent.context), parent, false))
             }
             R.layout.holder_sub_ability -> {
-                AbilityHolder(HolderAbilityBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+                SubAbilityHolder(HolderSubAbilityBinding.inflate(LayoutInflater.from(parent.context), parent, false))
             }
             else -> {
                 throw IllegalStateException()
@@ -30,15 +30,15 @@ class AbilityAdapter : BaseAdapter<Ability>(AbilityItemCallback()) {
         }
     }
 
-    inner class AbilityHolder(binding: HolderAbilityBinding) : BaseHolder<HolderAbilityBinding, Ability>(binding) {
-        override fun bind(element: Ability) {
+    inner class AbilityHolder(binding: HolderAbilityBinding) : BaseHolder<HolderAbilityBinding, Champion.Ability>(binding) {
+        override fun bind(element: Champion.Ability) {
             super.bind(element)
             binding.ability = element
         }
     }
 
-    inner class SubAbilityHolder(binding: HolderSubAbilityBinding) : BaseHolder<HolderSubAbilityBinding, Ability>(binding) {
-        override fun bind(element: Ability) {
+    inner class SubAbilityHolder(binding: HolderSubAbilityBinding) : BaseHolder<HolderSubAbilityBinding, Champion.Ability>(binding) {
+        override fun bind(element: Champion.Ability) {
             super.bind(element)
             binding.ability = element
         }
@@ -46,10 +46,10 @@ class AbilityAdapter : BaseAdapter<Ability>(AbilityItemCallback()) {
 
     override fun getItemViewType(position: Int): Int {
         return when(getItem(position).type) {
-            Ability.Type.NORMAL -> {
+            Champion.Ability.Type.NORMAL -> {
                 R.layout.holder_ability
             }
-            Ability.Type.SUB -> {
+            Champion.Ability.Type.SUB -> {
                 R.layout.holder_sub_ability
             }
         }
@@ -59,12 +59,12 @@ class AbilityAdapter : BaseAdapter<Ability>(AbilityItemCallback()) {
         return getItem(position).key.hashCode().toLong()
     }
 
-    class AbilityItemCallback : DiffUtil.ItemCallback<Ability>() {
-        override fun areItemsTheSame(oldItem: Ability, newItem: Ability): Boolean {
+    class AbilityItemCallback : DiffUtil.ItemCallback<Champion.Ability>() {
+        override fun areItemsTheSame(oldItem: Champion.Ability, newItem: Champion.Ability): Boolean {
             return oldItem.key == newItem.key
         }
 
-        override fun areContentsTheSame(oldItem: Ability, newItem: Ability): Boolean {
+        override fun areContentsTheSame(oldItem: Champion.Ability, newItem: Champion.Ability): Boolean {
             return oldItem == newItem
         }
     }

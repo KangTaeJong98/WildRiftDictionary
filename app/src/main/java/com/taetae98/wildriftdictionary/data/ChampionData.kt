@@ -1,6 +1,7 @@
 package com.taetae98.wildriftdictionary.data
 
 import android.util.Log
+import com.taetae98.wildriftdictionary.singleton.LocaleManager
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
 import org.jsoup.Jsoup
@@ -22,7 +23,7 @@ class ChampionData private constructor() {
     private val document by lazy {
         runBlocking(Dispatchers.IO) {
             try {
-                Jsoup.connect("https://poro.gg/wildrift/champions/garen").get()
+                Jsoup.connect("https://poro.gg/wildrift/champions/garen?hl=${LocaleManager.getPoroGGLocale()}").get()
             } catch (e: Exception) {
                 e.printStackTrace()
                 Jsoup.parse("")
@@ -34,8 +35,8 @@ class ChampionData private constructor() {
         val map = try {
             HashMap<String, List<Champion.Line>>().apply {
                 runBlocking(Dispatchers.IO) {
-                    Jsoup.connect("https://poro.gg/champions").get().getElementsByClass("champion-list__item").forEach {
-                        val nameKr = it.getElementsByClass("champion-list__item__name").first().text()
+                    Jsoup.connect("https://poro.gg/champions?hl=${LocaleManager.getPoroGGLocale()}").get().getElementsByClass("champion-list__item").forEach {
+                        val nameLocale = it.getElementsByClass("champion-list__item__name").first().text().trim()
                         val lines = it.attr("data-positions").split(",").map { line ->
                             when(line) {
                                 "top" -> {
@@ -59,7 +60,7 @@ class ChampionData private constructor() {
                             }
                         }
 
-                        put(nameKr, lines)
+                        put(nameLocale, lines)
                     }
                 }
             }
@@ -67,23 +68,25 @@ class ChampionData private constructor() {
             e.printStackTrace()
             mapOf()
         }
-
+        Log.d("PASS", "Line : $map")
         try {
             HashMap<String, Champion>().apply {
                 document.getElementsByClass("wildrift-box__content").first().children().forEach {
-                    val informationURL = it.attr("href")
+                    val informationURL = it.attr("href") + "?hl=${LocaleManager.getPoroGGLocale()}".trim()
 
                     val element = try { it.child(0) } catch (e: Exception) { Element("") }
-                    val imageURL = "http:${element.attr("src")}"
-                    val nameKr = element.attr("alt")
-                    val nameEn = imageURL.substringAfter("champion/").substringBefore(".")
+                    val imageURL = "http:${element.attr("src")}".trim()
+                    val nameLocale = element.attr("alt").trim()
+                    val nameEn = imageURL.substringAfter("champion/").substringBefore(".").trim()
                     val headerImageURL = "https://poro.gg/images/lol/champion/splash-modified/$nameEn.jpg"
                     val splashImageURL = "http://ddragon.leagueoflegends.com/cdn/img/champion/splash/${nameEn}_0.jpg"
 
-                    put(nameKr, Champion(nameKr, nameEn, imageURL, headerImageURL, splashImageURL, informationURL, map.getOrDefault(nameKr, emptyList())).also { champion ->
+                    put(nameLocale, Champion(nameLocale, nameEn, imageURL, headerImageURL, splashImageURL, informationURL, map.getOrDefault(nameLocale, emptyList())).also { champion ->
                         Log.d("PASS", champion.toString())
                     })
                 }
+            }.also {
+                Log.d("PASS", "Champion : $it")
             }
         } catch (e: Exception) {
             e.printStackTrace()

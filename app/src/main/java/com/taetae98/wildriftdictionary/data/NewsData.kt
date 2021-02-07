@@ -1,6 +1,7 @@
 package com.taetae98.wildriftdictionary.data
 
 import android.util.Log
+import com.taetae98.wildriftdictionary.singleton.LocaleManager
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
 import org.jsoup.Jsoup
@@ -21,7 +22,8 @@ class NewsData private constructor() {
     private val document by lazy {
         runBlocking(Dispatchers.IO) {
             try {
-                Jsoup.connect("https://wildrift.leagueoflegends.com/ko-kr/news/").get()
+                Log.d("PASS", "https://wildrift.leagueoflegends.com/${LocaleManager.getWildRiftLocale()}/news/")
+                Jsoup.connect("https://wildrift.leagueoflegends.com/${LocaleManager.getWildRiftLocale()}/news/").get()
             } catch (e: Exception) {
                 e.printStackTrace()
                 Jsoup.parse("")
