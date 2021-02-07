@@ -5,10 +5,14 @@
         <variable
             name="champion"
             type="com.taetae98.wildriftdictionary.data.Champion" />
+        <variable
+            name="onClick"
+            type="android.view.View.OnClickListener" />
     </data>
 
     <ImageView
         imageURL="@{champion.headerImageURL}"
+        android:onClick="@{onClick}"
         android:scaleType="centerCrop"
         android:contentDescription="@string/image"
         android:layout_width="match_parent"

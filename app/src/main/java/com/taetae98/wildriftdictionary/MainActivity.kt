@@ -1,5 +1,6 @@
 package com.taetae98.wildriftdictionary
 
+import androidx.appcompat.widget.Toolbar
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
@@ -24,12 +25,11 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
     override fun init() {
         super.init()
-        initSupportActionBar()
         initNavigationView()
     }
 
-    private fun initSupportActionBar() {
-        setSupportActionBar(binding.toolbar)
+    fun initSupportActionBar(toolbar: Toolbar) {
+        setSupportActionBar(toolbar)
         setupActionBarWithNavController(navController, appBarConfiguration)
     }
 

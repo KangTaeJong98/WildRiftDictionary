@@ -13,7 +13,12 @@ class WebViewFragment : BaseFragment<FragmentWebViewBinding>(R.layout.fragment_w
 
     override fun init() {
         super.init()
+        initSupportActionBar()
         initWebView()
+    }
+
+    private fun initSupportActionBar() {
+        setSupportActionBar(binding.toolbar)
     }
 
     @SuppressLint("SetJavaScriptEnabled")

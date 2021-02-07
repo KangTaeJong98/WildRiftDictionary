@@ -11,7 +11,12 @@ class MainFragment : BaseFragment<FragmentMainBinding>(R.layout.fragment_main) {
 
     override fun init() {
         super.init()
+        initSupportActionBar()
         initSpecialNewsRecyclerView()
+    }
+
+    private fun initSupportActionBar() {
+        setSupportActionBar(binding.toolbar)
     }
 
     private fun initSpecialNewsRecyclerView() {

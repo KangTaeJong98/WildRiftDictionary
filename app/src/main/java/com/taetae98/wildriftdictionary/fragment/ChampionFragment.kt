@@ -1,6 +1,10 @@
 package com.taetae98.wildriftdictionary.fragment
 
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.google.android.material.tabs.TabLayoutMediator
 import com.taetae98.wildriftdictionary.R
@@ -10,6 +14,10 @@ import com.taetae98.wildriftdictionary.data.ChampionData
 import com.taetae98.wildriftdictionary.databinding.FragmentChampionBinding
 
 class ChampionFragment : BaseFragment<FragmentChampionBinding>(R.layout.fragment_champion) {
+    init {
+        setHasOptionsMenu(true)
+    }
+
     companion object {
         private const val PAGE_COUNT = 6
         private const val ALL = 0
@@ -22,10 +30,30 @@ class ChampionFragment : BaseFragment<FragmentChampionBinding>(R.layout.fragment
 
     private val championList by lazy { ChampionData.getInstance().champions.values.toMutableList().apply { sortBy { it.nameKr } } }
 
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.fragment_champion_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId) {
+            R.id.search -> {
+                findNavController().navigate(ChampionFragmentDirections.actionChampionFragmentToChampionSearchFragment())
+            }
+        }
+
+        return super.onOptionsItemSelected(item)
+    }
+
     override fun init() {
         super.init()
+        initSupportActionBar()
         initViewPager()
         initTabLayoutMediator()
+    }
+
+    private fun initSupportActionBar() {
+        setSupportActionBar(binding.toolbar)
     }
 
     private fun initViewPager() {

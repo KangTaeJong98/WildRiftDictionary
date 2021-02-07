@@ -9,11 +9,7 @@
         android:id="@+id/mainFragment"
         android:name="com.taetae98.wildriftdictionary.fragment.MainFragment"
         android:label="MainFragment"
-        tools:layout="@layout/fragment_main">
-        <action
-            android:id="@+id/action_mainFragment_to_webViewFragment"
-            app:destination="@id/webViewFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_main"/>
     <fragment
         android:id="@+id/webViewFragment"
         android:name="com.taetae98.wildriftdictionary.fragment.WebViewFragment"
@@ -27,5 +23,28 @@
         android:id="@+id/championFragment"
         android:name="com.taetae98.wildriftdictionary.fragment.ChampionFragment"
         android:label="ChampionFragment"
-        tools:layout="@layout/fragment_champion"/>
+        tools:layout="@layout/fragment_champion">
+        <action
+            android:id="@+id/action_championFragment_to_championSearchFragment"
+            app:destination="@id/championSearchFragment" />
+    </fragment>
+    <fragment
+        tools:layout="@layout/fragment_champion_search"
+        android:id="@+id/championSearchFragment"
+        android:name="com.taetae98.wildriftdictionary.fragment.ChampionSearchFragment"
+        android:label="ChampionSearchFragment" />
+    <fragment
+        android:id="@+id/championInformationFragment"
+        android:name="com.taetae98.wildriftdictionary.fragment.ChampionInformationFragment"
+        android:label="ChampionInformationFragment" >
+        <argument
+            android:name="champion"
+            app:argType="com.taetae98.wildriftdictionary.data.Champion" />
+    </fragment>
+    <action
+        android:id="@+id/action_global_webViewFragment"
+        app:destination="@id/webViewFragment" />
+    <action
+        android:id="@+id/action_global_championInformationFragment"
+        app:destination="@id/championInformationFragment" />
 </navigation>

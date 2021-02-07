@@ -6,4 +6,6 @@
     <string name="image">Image</string>
     <string name="champion">Champion</string>
     <string name="main">Main</string>
+    <string name="search">Search</string>
+    <string name="name">Name</string>
 </resources>

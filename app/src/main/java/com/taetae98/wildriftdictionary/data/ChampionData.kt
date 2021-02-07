@@ -1,6 +1,5 @@
 package com.taetae98.wildriftdictionary.data
 
-import android.util.Log
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
 import org.jsoup.Jsoup
@@ -59,16 +58,15 @@ class ChampionData private constructor() {
                             }
                         }
 
-                        Log.d("PASS", "$nameKr : $lines")
                         put(nameKr, lines)
                     }
                 }
             }
         } catch (e: Exception) {
-            Log.d("PASS", e.toString())
+            e.printStackTrace()
             mapOf()
         }
-        Log.d("PASS", map.toString())
+
         try {
             HashMap<String, Champion>().apply {
                 document.getElementsByClass("wildrift-box__content").first().children().forEach {
