@@ -3,18 +3,22 @@ package com.taetae98.wildriftdictionary.fragment
 import androidx.navigation.fragment.navArgs
 import com.taetae98.wildriftdictionary.R
 import com.taetae98.wildriftdictionary.adapter.AbilityAdapter
+import com.taetae98.wildriftdictionary.adapter.ItemAdapter
 import com.taetae98.wildriftdictionary.adapter.SkillAdapter
 import com.taetae98.wildriftdictionary.base.BaseFragment
+import com.taetae98.wildriftdictionary.data.ItemData
 import com.taetae98.wildriftdictionary.databinding.FragmentChampionInformationBinding
 
 class ChampionInformationFragment : BaseFragment<FragmentChampionInformationBinding>(R.layout.fragment_champion_information) {
     private val args by navArgs<ChampionInformationFragmentArgs>()
 
     override fun init() {
+        ItemData.getInstance().items
         super.init()
         initCollapsingToolbar()
         initSupportActionBar()
         initImageView()
+        initItemRecyclerView()
         initAbilityRecyclerView()
         initSubAbilityRecyclerView()
         initSkillRecyclerView()
@@ -30,6 +34,15 @@ class ChampionInformationFragment : BaseFragment<FragmentChampionInformationBind
 
     private fun initImageView() {
         binding.imageURL = args.champion.splashImageURL
+    }
+
+    private fun initItemRecyclerView() {
+        args.champion.initItem()
+        with(binding.itemRecyclerView) {
+            adapter = ItemAdapter().apply {
+                submitList(args.champion.item)
+            }
+        }
     }
 
     private fun initAbilityRecyclerView() {

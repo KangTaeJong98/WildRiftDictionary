@@ -21,7 +21,8 @@ data class Champion(
     var wildCore: String = "",
     var ability: List<Ability> = emptyList(),
     var subAbility: List<Ability> = emptyList(),
-    var skill: List<Skill> = emptyList()
+    var skill: List<Skill> = emptyList(),
+    var item: List<Item> = emptyList(),
 ) : Serializable {
     enum class Line {
         NONE, TOP, JUNGLE, MID, BOT, SUPPORTER
@@ -124,6 +125,25 @@ data class Champion(
 
                         val description = infoElement.child(2).text()
                         add(Skill(imageURL, name, time, costType, cost, description).also { champion -> Log.d("PASS", champion.toString()) })
+                    }
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
+                emptyList()
+            }
+        }
+    }
+
+    fun initItem() {
+        if (item.isEmpty()) {
+            item = try {
+                ArrayList<Item>().apply {
+                    document.getElementsByClass("wildrift-detail__recommend__item__content").first().children().forEach {
+                        ItemData.getInstance().items.find { item ->
+                            item.name == it.attr("alt")
+                        }?.let { item ->
+                            add(item)
+                        }
                     }
                 }
             } catch (e: Exception) {
