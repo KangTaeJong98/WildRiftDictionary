@@ -7,6 +7,10 @@ import com.taetae98.wildriftdictionary.data.Champion
 import com.taetae98.wildriftdictionary.databinding.FragmentChampionPageBinding
 
 class ChampionPageFragment : BaseFragment<FragmentChampionPageBinding>(R.layout.fragment_champion_page) {
+    init {
+        retainInstance = true
+    }
+
     private val championAdapter by lazy { ChampionAdapter() }
 
     override fun init() {
