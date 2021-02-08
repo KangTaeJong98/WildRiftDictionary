@@ -4,7 +4,6 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.google.android.material.tabs.TabLayoutMediator
 import com.taetae98.wildriftdictionary.R
@@ -12,6 +11,7 @@ import com.taetae98.wildriftdictionary.base.BaseFragment
 import com.taetae98.wildriftdictionary.data.Item
 import com.taetae98.wildriftdictionary.data.ItemData
 import com.taetae98.wildriftdictionary.databinding.FragmentChampionBinding
+import com.taetae98.wildriftdictionary.dialog.ItemSearchDialog
 
 class ItemFragment : BaseFragment<FragmentChampionBinding>(R.layout.fragment_champion) {
     init {
@@ -36,7 +36,7 @@ class ItemFragment : BaseFragment<FragmentChampionBinding>(R.layout.fragment_cha
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId) {
             R.id.search -> {
-                findNavController().navigate(ChampionFragmentDirections.actionChampionFragmentToChampionSearchFragment())
+                ItemSearchDialog(requireContext()).show()
             }
         }
 

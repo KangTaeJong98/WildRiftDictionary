@@ -5,17 +5,17 @@ import android.os.Bundle
 import android.view.ViewGroup
 import com.taetae98.wildriftdictionary.R
 import com.taetae98.wildriftdictionary.base.BaseDialog
-import com.taetae98.wildriftdictionary.data.Item
-import com.taetae98.wildriftdictionary.databinding.DialogItemBinding
+import com.taetae98.wildriftdictionary.data.Rune
+import com.taetae98.wildriftdictionary.databinding.DialogRuneBinding
 
-class ItemDialog(context: Context, private var item: Item = Item()) : BaseDialog<DialogItemBinding>(context, R.layout.dialog_item) {
+class RuneDialog(context: Context, private var rune: Rune = Rune()) : BaseDialog<DialogRuneBinding>(context, R.layout.dialog_rune) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
     }
 
-    fun bind(item: Item) {
-        this.item = item
+    fun bind(rune: Rune) {
+        this.rune = rune
         initItem()
     }
 
@@ -25,6 +25,6 @@ class ItemDialog(context: Context, private var item: Item = Item()) : BaseDialog
     }
 
     private fun initItem() {
-        binding.item = item
+        binding.rune = rune
     }
 }

@@ -24,15 +24,8 @@
         android:name="com.taetae98.wildriftdictionary.fragment.ChampionFragment"
         android:label="ChampionFragment"
         tools:layout="@layout/fragment_champion">
-        <action
-            android:id="@+id/action_championFragment_to_championSearchFragment"
-            app:destination="@id/championSearchFragment" />
     </fragment>
-    <fragment
-        tools:layout="@layout/fragment_champion_search"
-        android:id="@+id/championSearchFragment"
-        android:name="com.taetae98.wildriftdictionary.fragment.ChampionSearchFragment"
-        android:label="ChampionSearchFragment" />
+
     <fragment
         android:id="@+id/championInformationFragment"
         android:name="com.taetae98.wildriftdictionary.fragment.ChampionInformationFragment"

@@ -8,6 +8,10 @@
         <item name="android:textColor">#FFFFFF</item>
     </style>
 
+    <style name="DialogTime" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+
     <style name="DialogCost" parent="Widget.MaterialComponents.TextView">
         <item name="android:textColor">#FFFFFF</item>
     </style>

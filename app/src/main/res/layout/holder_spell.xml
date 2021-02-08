@@ -6,11 +6,14 @@
         <variable
             name="spell"
             type="com.taetae98.wildriftdictionary.data.Spell" />
+        <variable
+            name="onClick"
+            type="android.view.View.OnClickListener" />
     </data>
 
     <com.taetae98.wildriftdictionary.view.CircleImageView
         app:imageURL="@{spell.imageURL}"
-
+        android:onClick="@{onClick}"
         android:contentDescription="@string/image"
         android:adjustViewBounds="true"
         android:layout_width="80dp"

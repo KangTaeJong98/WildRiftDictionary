@@ -8,6 +8,7 @@ import com.taetae98.wildriftdictionary.base.BaseAdapter
 import com.taetae98.wildriftdictionary.base.BaseHolder
 import com.taetae98.wildriftdictionary.data.Rune
 import com.taetae98.wildriftdictionary.databinding.HolderRuneBinding
+import com.taetae98.wildriftdictionary.dialog.RuneDialog
 
 class RuneAdapter : BaseAdapter<Rune>(RuneItemCallback()) {
     init {
@@ -19,6 +20,12 @@ class RuneAdapter : BaseAdapter<Rune>(RuneItemCallback()) {
     }
 
     inner class RuneHolder(binding: HolderRuneBinding) : BaseHolder<HolderRuneBinding, Rune>(binding) {
+        init {
+            binding.setOnClick {
+                RuneDialog(context, element).show()
+            }
+        }
+
         override fun bind(element: Rune) {
             super.bind(element)
             binding.rune = element

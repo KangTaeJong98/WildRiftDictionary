@@ -1,25 +1,28 @@
-package com.taetae98.wildriftdictionary.fragment
+package com.taetae98.wildriftdictionary.dialog
 
+import android.content.Context
+import android.os.Bundle
+import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
 import com.taetae98.wildriftdictionary.R
 import com.taetae98.wildriftdictionary.adapter.ChampionAdapter
-import com.taetae98.wildriftdictionary.base.BaseFragment
+import com.taetae98.wildriftdictionary.base.BaseDialog
 import com.taetae98.wildriftdictionary.data.ChampionData
-import com.taetae98.wildriftdictionary.databinding.FragmentChampionSearchBinding
+import com.taetae98.wildriftdictionary.databinding.DialogChampionSearchBinding
 import java.util.*
 
-class ChampionSearchFragment : BaseFragment<FragmentChampionSearchBinding>(R.layout.fragment_champion_search) {
+class ChampionSearchDialog(context: Context) : BaseDialog<DialogChampionSearchBinding>(context, R.layout.dialog_champion_search) {
     private val championAdapter by lazy { ChampionAdapter().apply { submitList(ChampionData.getInstance().champions.values.toMutableList().apply { sortBy { it.nameLocale } }) } }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
+    }
 
     override fun init() {
         super.init()
-        initSetSupportActionBar()
         initTextInputLayout()
         initRecyclerView()
-    }
-
-    private fun initSetSupportActionBar() {
-        setSupportActionBar(binding.toolbar)
     }
 
     private fun initTextInputLayout() {
