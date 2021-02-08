@@ -6,54 +6,20 @@
         <variable
             name="skill"
             type="com.taetae98.wildriftdictionary.data.Skill" />
+        <variable
+            name="onClick"
+            type="android.view.View.OnClickListener" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <ImageView
-            android:id="@+id/image"
-            app:imageURL="@{skill.imageURL}"
-            android:contentDescription="@string/image"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:adjustViewBounds="true"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/name"
-            android:text="@{skill.name, default=Name}"
-            android:gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/image"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/time"
-            android:text="@{skill.time, default=Time}"
-            android:gravity="start"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/name"
-            app:layout_constraintStart_toStartOf="parent" />
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/cost"
-            android:text="@{skill.cost, default=Cost}"
-            android:gravity="start"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/name"
-            app:layout_constraintStart_toEndOf="@id/time" />
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/description"
-            android:text="@{skill.description, default=Description}"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/time"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <ImageView
+        android:id="@+id/image"
+        app:imageURL="@{skill.imageURL}"
+        android:onClick="@{onClick}"
+        android:contentDescription="@string/image"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:adjustViewBounds="true"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 </layout>

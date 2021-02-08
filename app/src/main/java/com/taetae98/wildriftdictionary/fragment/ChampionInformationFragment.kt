@@ -2,17 +2,22 @@ package com.taetae98.wildriftdictionary.fragment
 
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.RecyclerView
+import com.google.android.flexbox.FlexboxLayoutManager
+import com.google.android.flexbox.JustifyContent
 import com.taetae98.wildriftdictionary.ActivityMainNavigationXmlDirections
+import com.taetae98.wildriftdictionary.GridSpacingItemDecoration
 import com.taetae98.wildriftdictionary.R
 import com.taetae98.wildriftdictionary.adapter.*
 import com.taetae98.wildriftdictionary.base.BaseFragment
 import com.taetae98.wildriftdictionary.databinding.FragmentChampionInformationBinding
 import com.taetae98.wildriftdictionary.singleton.LocaleManager
+import com.taetae98.wildriftdictionary.toDp
 import java.util.*
 
 class ChampionInformationFragment : BaseFragment<FragmentChampionInformationBinding>(R.layout.fragment_champion_information) {
     private val args by navArgs<ChampionInformationFragmentArgs>()
-
+    private val spacingItemDecoration by lazy { GridSpacingItemDecoration(1, 10.toDp(), RecyclerView.HORIZONTAL) }
     override fun init() {
         super.init()
         initCollapsingToolbar()
@@ -44,6 +49,10 @@ class ChampionInformationFragment : BaseFragment<FragmentChampionInformationBind
             adapter = ItemAdapter().apply {
                 submitList(args.champion.item)
             }
+            layoutManager = FlexboxLayoutManager(requireContext()).apply {
+                justifyContent = JustifyContent.CENTER
+            }
+            addItemDecoration(spacingItemDecoration)
         }
     }
 
@@ -52,6 +61,10 @@ class ChampionInformationFragment : BaseFragment<FragmentChampionInformationBind
             adapter = RuneAdapter().apply {
                 submitList(args.champion.rune)
             }
+            layoutManager = FlexboxLayoutManager(requireContext()).apply {
+                justifyContent = JustifyContent.CENTER
+            }
+            addItemDecoration(spacingItemDecoration)
         }
     }
 
@@ -60,6 +73,10 @@ class ChampionInformationFragment : BaseFragment<FragmentChampionInformationBind
             adapter = SpellAdapter().apply {
                 submitList(args.champion.spell)
             }
+            layoutManager = FlexboxLayoutManager(requireContext()).apply {
+                justifyContent = JustifyContent.CENTER
+            }
+            addItemDecoration(spacingItemDecoration)
         }
     }
 
@@ -84,6 +101,10 @@ class ChampionInformationFragment : BaseFragment<FragmentChampionInformationBind
             adapter = SkillAdapter().apply {
                 submitList(args.champion.skill)
             }
+            layoutManager = FlexboxLayoutManager(requireContext()).apply {
+                justifyContent = JustifyContent.CENTER
+            }
+            addItemDecoration(spacingItemDecoration)
         }
     }
 

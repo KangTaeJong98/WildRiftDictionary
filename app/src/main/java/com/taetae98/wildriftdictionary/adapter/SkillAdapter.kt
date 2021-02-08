@@ -8,6 +8,7 @@ import com.taetae98.wildriftdictionary.base.BaseAdapter
 import com.taetae98.wildriftdictionary.base.BaseHolder
 import com.taetae98.wildriftdictionary.data.Skill
 import com.taetae98.wildriftdictionary.databinding.HolderSkillBinding
+import com.taetae98.wildriftdictionary.dialog.SkillDialog
 
 class SkillAdapter : BaseAdapter<Skill>(SkillItemCallback()) {
     init {
@@ -23,6 +24,11 @@ class SkillAdapter : BaseAdapter<Skill>(SkillItemCallback()) {
     }
 
     class SkillHolder(binding: HolderSkillBinding) : BaseHolder<HolderSkillBinding, Skill>(binding) {
+        init {
+            binding.setOnClick {
+                SkillDialog(context, element).show()
+            }
+        }
         override fun bind(element: Skill) {
             super.bind(element)
             binding.skill = element

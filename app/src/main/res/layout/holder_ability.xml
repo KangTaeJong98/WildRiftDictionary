@@ -10,17 +10,24 @@
 
     <LinearLayout
         android:orientation="vertical"
-        android:layout_width="100dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
         <com.google.android.material.textview.MaterialTextView
             android:text="@{ability.key, default=Key}"
+            android:textColor="@color/onMain"
+            android:textStyle="bold"
+            android:padding="10dp"
+            android:background="@color/main"
             android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
         <com.google.android.material.textview.MaterialTextView
-            android:text="@{ability.value, default=Vey}"
+            android:text="@{ability.value, default=Value}"
+            android:textColor="@color/black"
+            android:background="@color/onMain"
+            android:padding="5dp"
             android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />

@@ -8,4 +8,10 @@
     <string name="champion_universe">Champion Universe</string>
     <string name="item">Item</string>
     <string name="rune">Rune</string>
+    <string name="recommend_items">Recommend Items</string>
+    <string name="recommend_rune">Recommend Rune</string>
+    <string name="recommend_spell">Recommend Spell</string>
+    <string name="ability">Ability</string>
+    <string name="sub_ability">Sub Ability</string>
+    <string name="skill">Skill</string>
 </resources>

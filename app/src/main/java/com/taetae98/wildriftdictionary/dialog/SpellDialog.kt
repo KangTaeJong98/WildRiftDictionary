@@ -16,15 +16,15 @@ class SpellDialog(context: Context, private var spell: Spell = Spell()) : BaseDi
 
     fun bind(spell: Spell) {
         this.spell = spell
-        initItem()
+        initSpell()
     }
 
     override fun init() {
         super.init()
-        initItem()
+        initSpell()
     }
 
-    private fun initItem() {
+    private fun initSpell() {
         binding.spell = spell
     }
 }

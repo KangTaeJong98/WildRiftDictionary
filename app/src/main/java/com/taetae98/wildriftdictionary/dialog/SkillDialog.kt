@@ -5,26 +5,26 @@ import android.os.Bundle
 import android.view.ViewGroup
 import com.taetae98.wildriftdictionary.R
 import com.taetae98.wildriftdictionary.base.BaseDialog
-import com.taetae98.wildriftdictionary.data.Rune
-import com.taetae98.wildriftdictionary.databinding.DialogRuneBinding
+import com.taetae98.wildriftdictionary.data.Skill
+import com.taetae98.wildriftdictionary.databinding.DialogSkillBinding
 
-class RuneDialog(context: Context, private var rune: Rune = Rune()) : BaseDialog<DialogRuneBinding>(context, R.layout.dialog_rune) {
+class SkillDialog(context: Context, private var skill: Skill) : BaseDialog<DialogSkillBinding>(context, R.layout.dialog_skill) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
     }
 
-    fun bind(rune: Rune) {
-        this.rune = rune
-        initRune()
+    fun bind(skill: Skill) {
+        this.skill = skill
+        initSkill()
     }
 
     override fun init() {
         super.init()
-        initRune()
+        initSkill()
     }
 
-    private fun initRune() {
-        binding.rune = rune
+    private fun initSkill() {
+        binding.skill = skill
     }
 }
