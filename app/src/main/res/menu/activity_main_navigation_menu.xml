@@ -2,8 +2,8 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/mainFragment"
-        android:title="@string/main" />
+        android:id="@+id/newsFragment"
+        android:title="@string/news" />
     <item
         android:id="@+id/championFragment"
         android:title="@string/champion" />

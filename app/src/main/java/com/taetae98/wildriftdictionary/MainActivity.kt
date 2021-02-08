@@ -17,7 +17,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     private val appBarConfiguration by lazy {
         AppBarConfiguration(
             setOf(
-                R.id.mainFragment, R.id.championFragment, R.id.itemFragment, R.id.runeFragment
+                R.id.newsFragment, R.id.championFragment, R.id.itemFragment, R.id.runeFragment
             ),
             binding.drawer
         )

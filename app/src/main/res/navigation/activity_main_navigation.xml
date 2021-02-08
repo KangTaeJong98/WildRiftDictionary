@@ -3,17 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/activity_main_navigation.xml"
     xmlns:tools="http://schemas.android.com/tools"
-    app:startDestination="@id/mainFragment">
+    app:startDestination="@id/newsFragment">
 
     <fragment
-        android:id="@+id/mainFragment"
-        android:name="com.taetae98.wildriftdictionary.fragment.MainFragment"
-        android:label="MainFragment"
+        android:id="@+id/newsFragment"
+        android:name="com.taetae98.wildriftdictionary.fragment.NewsFragment"
+        android:label="@string/news"
         tools:layout="@layout/fragment_main"/>
     <fragment
         android:id="@+id/webViewFragment"
         android:name="com.taetae98.wildriftdictionary.fragment.WebViewFragment"
-        android:label="WebViewFragment"
         tools:layout="@layout/fragment_web_view">
         <argument
             android:name="url"
@@ -22,14 +21,13 @@
     <fragment
         android:id="@+id/championFragment"
         android:name="com.taetae98.wildriftdictionary.fragment.ChampionFragment"
-        android:label="ChampionFragment"
+        android:label="@string/champion"
         tools:layout="@layout/fragment_champion">
     </fragment>
 
     <fragment
         android:id="@+id/championInformationFragment"
         android:name="com.taetae98.wildriftdictionary.fragment.ChampionInformationFragment"
-        android:label="ChampionInformationFragment"
         tools:layout="@layout/fragment_champion_information">
         <argument
             android:name="champion"
@@ -44,11 +42,11 @@
     <fragment
         android:id="@+id/itemFragment"
         android:name="com.taetae98.wildriftdictionary.fragment.ItemFragment"
-        android:label="ItemFragment"
+        android:label="@string/item"
         tools:layout="@layout/fragment_item"/>
     <fragment
         android:id="@+id/runeFragment"
         android:name="com.taetae98.wildriftdictionary.fragment.RuneFragment"
-        android:label="RuneFragment"
+        android:label="@string/rune"
         tools:layout="@layout/fragment_rune"/>
 </navigation>

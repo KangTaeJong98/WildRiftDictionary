@@ -6,7 +6,7 @@ import com.taetae98.wildriftdictionary.base.BaseFragment
 import com.taetae98.wildriftdictionary.data.NewsData
 import com.taetae98.wildriftdictionary.databinding.FragmentMainBinding
 
-class MainFragment : BaseFragment<FragmentMainBinding>(R.layout.fragment_main) {
+class NewsFragment : BaseFragment<FragmentMainBinding>(R.layout.fragment_main) {
     private val data = NewsData.getInstance()
 
     override fun init() {

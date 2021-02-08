@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">WildRift Dictionary</string>
+    <string name="news">뉴스</string>
+    <string name="image">이미지</string>
+    <string name="champion">챔피언</string>
+    <string name="search">검색</string>
+    <string name="name">이름</string>
+    <string name="champion_universe">챔피언 유니버스</string>
+    <string name="item">아이템</string>
+    <string name="rune">룬</string>
+</resources>
