@@ -7,4 +7,11 @@
     <item
         android:id="@+id/championFragment"
         android:title="@string/champion" />
+    <item
+        android:id="@+id/itemFragment"
+        android:title="@string/item" />
+
+    <item
+        android:id="@+id/runeFragment"
+        android:title="@string/rune" />
 </menu>

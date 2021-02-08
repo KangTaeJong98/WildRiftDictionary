@@ -10,7 +10,7 @@ data class Item(
     var level: Level = Level.NONE
 ) {
     enum class Type {
-        PHYSIC, MAGIC, DEFENSE, BOOTS, NONE
+        PHYSICAL, MAGIC, DEFENSE, BOOTS, NONE
     }
 
     enum class Level {

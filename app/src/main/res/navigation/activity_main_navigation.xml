@@ -36,7 +36,8 @@
     <fragment
         android:id="@+id/championInformationFragment"
         android:name="com.taetae98.wildriftdictionary.fragment.ChampionInformationFragment"
-        android:label="ChampionInformationFragment" >
+        android:label="ChampionInformationFragment"
+        tools:layout="@layout/fragment_champion_information">
         <argument
             android:name="champion"
             app:argType="com.taetae98.wildriftdictionary.data.Champion" />
@@ -47,4 +48,14 @@
     <action
         android:id="@+id/action_global_championInformationFragment"
         app:destination="@id/championInformationFragment" />
+    <fragment
+        android:id="@+id/itemFragment"
+        android:name="com.taetae98.wildriftdictionary.fragment.ItemFragment"
+        android:label="ItemFragment"
+        tools:layout="@layout/fragment_item"/>
+    <fragment
+        android:id="@+id/runeFragment"
+        android:name="com.taetae98.wildriftdictionary.fragment.RuneFragment"
+        android:label="RuneFragment"
+        tools:layout="@layout/fragment_rune"/>
 </navigation>

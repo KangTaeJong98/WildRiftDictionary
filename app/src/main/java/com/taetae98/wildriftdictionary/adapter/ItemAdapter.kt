@@ -8,6 +8,7 @@ import com.taetae98.wildriftdictionary.base.BaseAdapter
 import com.taetae98.wildriftdictionary.base.BaseHolder
 import com.taetae98.wildriftdictionary.data.Item
 import com.taetae98.wildriftdictionary.databinding.HolderItemBinding
+import com.taetae98.wildriftdictionary.dialog.ItemDialog
 
 class ItemAdapter : BaseAdapter<Item>(ItemItemCallback()) {
     init {
@@ -19,6 +20,11 @@ class ItemAdapter : BaseAdapter<Item>(ItemItemCallback()) {
     }
 
     inner class ItemHolder(binding: HolderItemBinding) : BaseHolder<HolderItemBinding, Item>(binding) {
+        init {
+            binding.setOnClick {
+                ItemDialog(context, element).show()
+            }
+        }
         override fun bind(element: Item) {
             super.bind(element)
             binding.item = element

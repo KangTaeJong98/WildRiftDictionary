@@ -9,4 +9,6 @@
     <string name="search">Search</string>
     <string name="name">Name</string>
     <string name="champion_universe">Champion Universe</string>
+    <string name="item">Item</string>
+    <string name="rune">Rune</string>
 </resources>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Dialog" parent="Theme.MaterialComponents.DayNight.Dialog">
+        <item name="android:background">#000000</item>
+    </style>
+
+    <style name="DialogName" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+
+    <style name="DialogCost" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+
+    <style name="DialogAbility" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+
+    <style name="DialogDescription" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+</resources>

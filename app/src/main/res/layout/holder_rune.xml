@@ -6,6 +6,9 @@
         <variable
             name="rune"
             type="com.taetae98.wildriftdictionary.data.Rune" />
+        <variable
+            name="onClick"
+            type="android.view.View.OnClickListener" />
     </data>
 
     <com.taetae98.wildriftdictionary.view.CircleImageView

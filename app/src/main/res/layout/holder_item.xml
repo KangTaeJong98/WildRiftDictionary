@@ -3,15 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+        <import type="com.taetae98.wildriftdictionary.dialog.ItemDialog" />
         <variable
             name="item"
             type="com.taetae98.wildriftdictionary.data.Item" />
+        <variable
+            name="onClick"
+            type="android.view.View.OnClickListener" />
     </data>
 
     <ImageView
         app:imageURL="@{item.imageURL}"
         android:contentDescription="@string/image"
         android:adjustViewBounds="true"
+        android:onClick="@{onClick}"
         android:layout_width="80dp"
         android:layout_height="80dp" />
 </layout>

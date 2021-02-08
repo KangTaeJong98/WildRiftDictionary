@@ -28,7 +28,7 @@ class ItemData private constructor() {
                     val type = try {
                         when (it.getElementsByClass("wildrift-items__group").first().text()) {
                             "물리 아이템", "Physical Items" -> {
-                                Item.Type.PHYSIC
+                                Item.Type.PHYSICAL
                             }
                             "마법 아이템", "Magic Items" -> {
                                 Item.Type.MAGIC
@@ -48,46 +48,47 @@ class ItemData private constructor() {
                         Item.Type.NONE
                     }
 
-                    val level = try {
-                        when (it.getElementsByClass("wildrift-items__box__header").first().text()) {
-                            "최고 단계", "Upgraded" -> {
-                                Item.Level.UPGRADED
+                    it.getElementsByClass("wildrift-items__box").forEach { element ->
+                        val level = try {
+                            when (element.getElementsByClass("wildrift-items__box__header").first().text()) {
+                                "최고 단계", "Upgraded" -> {
+                                    Item.Level.UPGRADED
+                                }
+                                "중간 단계", "Mid Tier" -> {
+                                    Item.Level.MID
+                                }
+                                "기본", "Basic" -> {
+                                    Item.Level.BASIC
+                                }
+                                "마법 부여", "Enchantments" -> {
+                                    Item.Level.ENCHANTMENT
+                                }
+                                else -> {
+                                    throw IllegalStateException()
+                                }
                             }
-                            "중간 단계", "Mid Tier" -> {
-                                Item.Level.MID
-                            }
-                            "기본", "Basic" -> {
-                                Item.Level.BASIC
-                            }
-                            "마법 부여", "Enchantments" -> {
-                                Item.Level.ENCHANTMENT
-                            }
-                            else -> {
-                                throw IllegalStateException()
-                            }
+                        } catch (e: Exception) {
+                            e.printStackTrace()
+                            Item.Level.NONE
                         }
-                    } catch (e: Exception) {
-                        e.printStackTrace()
-                        Item.Level.NONE
-                    }
 
-                    try {
-                        it.getElementsByClass("wildrift-items__box__content").first().child(0).children().forEach { itemElement ->
-                            val imageURL = try { itemElement.child(0).attr("src").trim() } catch (e: Exception) { e.printStackTrace(); "" }
-                            val name = try { itemElement.child(0).attr("alt").trim() } catch (e: Exception) { e.printStackTrace(); "" }
+                        try {
+                            element.getElementsByClass("wildrift-items__box__content").first().child(0).children().forEach { itemElement ->
+                                val imageURL = try { itemElement.child(0).attr("src").trim() } catch (e: Exception) { e.printStackTrace(); "" }
+                                val name = try { itemElement.child(0).attr("alt").trim() } catch (e: Exception) { e.printStackTrace(); "" }
 
-                            val informationElement = try { Jsoup.parse(itemElement.child(0).attr("title")) } catch (e: Exception) { e.printStackTrace(); Jsoup.parse("") }
+                                val informationElement = try { Jsoup.parse(itemElement.child(0).attr("title")) } catch (e: Exception) { e.printStackTrace(); Jsoup.parse("") }
 
-                            val cost = try { informationElement.getElementsByClass("wdr-tooltip__item__info").first().child(1).text().trim() } catch (e: Exception) { e.printStackTrace(); "" }
-                            val ability = try { informationElement.getElementsByClass("wdr-tooltip__stats").text().trim() } catch (e: Exception) { e.printStackTrace(); "" }
-                            val description = try { informationElement.getElementsByClass("wdr-tooltip__description").text().trim() } catch (e: Exception) { e.printStackTrace(); "" }
+                                val cost = try { informationElement.getElementsByClass("wdr-tooltip__item__info").first().child(1).text().trim() } catch (e: Exception) { e.printStackTrace(); "" }
+                                val ability = try { informationElement.getElementsByClass("wdr-tooltip__stats").text().trim() } catch (e: Exception) { e.printStackTrace(); "" }
+                                val description = try { informationElement.getElementsByClass("wdr-tooltip__description").text().trim() } catch (e: Exception) { e.printStackTrace(); "" }
 
-                            add(Item(imageURL, name, cost, ability, description, type, level).also { item -> Log.d("PASS", item.toString()) })
+                                add(Item(imageURL, name, cost, ability, description, type, level).also { item -> Log.d("PASS", item.toString()) })
+                            }
+                        } catch (e: Exception) {
+                            e.printStackTrace()
                         }
-                    } catch (e: Exception) {
-                        e.printStackTrace()
                     }
-
                 }
             }
         } catch (e: Exception) {
