@@ -80,7 +80,13 @@ class ItemData private constructor() {
                                 val informationElement = try { Jsoup.parse(itemElement.child(0).attr("title")) } catch (e: Exception) { e.printStackTrace(); Jsoup.parse("") }
 
                                 val cost = try { informationElement.getElementsByClass("wdr-tooltip__item__info").first().child(1).text().trim() } catch (e: Exception) { e.printStackTrace(); "" }
-                                val ability = try { informationElement.getElementsByClass("wdr-tooltip__stats").text().trim() } catch (e: Exception) { e.printStackTrace(); "" }
+                                val sb = StringBuilder().apply {
+                                    informationElement.getElementsByClass("wdr-tooltip__stats").html().split("<br>").forEach { string ->
+                                        append(string.trim())
+                                        appendLine()
+                                    }
+                                }
+                                val ability = sb.toString()
                                 val description = try { informationElement.getElementsByClass("wdr-tooltip__description").text().trim() } catch (e: Exception) { e.printStackTrace(); "" }
 
                                 add(Item(imageURL, name, cost, ability, description, type, level).also { item -> Log.d("PASS", item.toString()) })

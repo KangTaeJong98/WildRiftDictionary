@@ -41,6 +41,7 @@
                 <ImageView
                     android:id="@+id/image"
                     app:imageURL="@{imageURL}"
+                    android:adjustViewBounds="true"
                     android:contentDescription="@string/image"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -74,7 +75,7 @@
 
                         <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/item_recycler_view"
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="10dp"
                             android:nestedScrollingEnabled="false"
@@ -111,7 +112,7 @@
 
                         <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/rune_recycler_view"
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="10dp"
                             android:nestedScrollingEnabled="false"
@@ -148,7 +149,7 @@
 
                         <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/spell_recycler_view"
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="10dp"
                             android:nestedScrollingEnabled="false"
@@ -185,7 +186,7 @@
 
                         <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/ability_recycler_view"
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="10dp"
                             android:orientation="horizontal"
@@ -223,7 +224,7 @@
 
                         <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/sub_ability_recycler_view"
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="10dp"
                             android:orientation="horizontal"
@@ -260,7 +261,8 @@
 
                         <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/skill_recycler_view"
-                            android:layout_width="wrap_content"
+                            android:nestedScrollingEnabled="false"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_margin="10dp"
                             app:layout_constraintBottom_toBottomOf="parent"

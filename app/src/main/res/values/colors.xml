@@ -12,4 +12,10 @@
     <color name="sub">#FF3A3F4C</color>
     <color name="onMain">#FFFFFFFF</color>
     <color name="accent">#FF8C6E2E</color>
+
+    <color name="color_cool_time">#5383E8</color>
+    <color name="color_hp">#11B288</color>
+    <color name="color_mp">#207AC7</color>
+    <color name="color_energy">#FFC528</color>
+    <color name="color_anger">#ED6767</color>
 </resources>

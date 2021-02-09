@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <ImageView
+            <com.taetae98.wildriftdictionary.view.CircleImageView
                 android:id="@+id/image"
                 app:imageURL="@{spell.imageURL}"
                 android:contentDescription="@string/image"
@@ -32,7 +32,7 @@
                 style="@style/DialogName"
                 android:text="@{spell.name, default=Name}"
                 android:layout_margin="10dp"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@id/image"
                 app:layout_constraintStart_toStartOf="parent"
@@ -43,7 +43,7 @@
                 style="@style/DialogTime"
                 android:text="@{spell.time, default=Time}"
                 android:layout_margin="10dp"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@id/name"
                 app:layout_constraintStart_toStartOf="parent"
@@ -54,10 +54,11 @@
                 style="@style/DialogDescription"
                 android:text="@{spell.description, default=Description}"
                 android:layout_margin="10dp"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@id/time"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"/>
 
 
