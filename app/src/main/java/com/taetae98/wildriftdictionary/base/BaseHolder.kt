@@ -15,6 +15,6 @@ abstract class BaseHolder<VB: ViewDataBinding, E: Any>(protected val binding: VB
     }
 
     open fun bind(element: E, payload: MutableList<Any>) {
-        this.element = element
+        bind(element)
     }
 }
