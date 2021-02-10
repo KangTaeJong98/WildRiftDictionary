@@ -18,4 +18,8 @@
     <string name="mid_item">Mid Item</string>
     <string name="enchantment_item">Enchantment Item</string>
     <string name="basic_item">Basic Item</string>
+    <string name="key_stone">Key Stone</string>
+    <string name="domination">Domination</string>
+    <string name="resolve">Resolve</string>
+    <string name="inspiration">Inspiration</string>
 </resources>

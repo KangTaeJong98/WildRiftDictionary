@@ -9,4 +9,18 @@
     <string name="champion_universe">챔피언 유니버스</string>
     <string name="item">아이템</string>
     <string name="rune">룬</string>
+    <string name="recommend_items">추천 아이템</string>
+    <string name="recommend_rune">추천 룬</string>
+    <string name="recommend_spell">추천 스펠</string>
+    <string name="ability">능력</string>
+    <string name="sub_ability">보조능력</string>
+    <string name="skill">스킬</string>
+    <string name="upgraded_item">코어 아이템</string>
+    <string name="mid_item">중간 아이템</string>
+    <string name="enchantment_item">마법 부여 아이템</string>
+    <string name="basic_item">기본 아이템</string>
+    <string name="key_stone">핵심</string>
+    <string name="domination">지배</string>
+    <string name="resolve">결의</string>
+    <string name="inspiration">영감</string>
 </resources>
