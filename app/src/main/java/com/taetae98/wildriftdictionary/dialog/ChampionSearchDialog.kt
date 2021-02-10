@@ -1,9 +1,8 @@
 package com.taetae98.wildriftdictionary.dialog
 
-import android.content.Context
-import android.os.Bundle
 import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
+import androidx.navigation.fragment.findNavController
 import com.taetae98.wildriftdictionary.R
 import com.taetae98.wildriftdictionary.adapter.ChampionAdapter
 import com.taetae98.wildriftdictionary.base.BaseDialog
@@ -11,12 +10,21 @@ import com.taetae98.wildriftdictionary.data.ChampionData
 import com.taetae98.wildriftdictionary.databinding.DialogChampionSearchBinding
 import java.util.*
 
-class ChampionSearchDialog(context: Context) : BaseDialog<DialogChampionSearchBinding>(context, R.layout.dialog_champion_search) {
-    private val championAdapter by lazy { ChampionAdapter().apply { submitList(ChampionData.getInstance().champions.values.toMutableList().apply { sortBy { it.nameLocale } }) } }
+class ChampionSearchDialog : BaseDialog<DialogChampionSearchBinding>(R.layout.dialog_champion_search) {
+    private val championAdapter by lazy {
+        ChampionAdapter().apply {
+            submitList(ChampionData.getInstance().champions.values.toMutableList().apply {
+                sortBy { it.nameLocale }
+                onClick = {
+                    findNavController().navigate(ChampionSearchDialogDirections.actionChampionSearchDialogToChampionInformationFragment(it))
+                }
+            })
+        }
+    }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
+    override fun onResume() {
+        super.onResume()
+        setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
     }
 
     override fun init() {

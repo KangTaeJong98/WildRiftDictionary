@@ -1,30 +1,26 @@
 package com.taetae98.wildriftdictionary.dialog
 
-import android.content.Context
-import android.os.Bundle
 import android.view.ViewGroup
+import androidx.navigation.fragment.navArgs
 import com.taetae98.wildriftdictionary.R
 import com.taetae98.wildriftdictionary.base.BaseDialog
-import com.taetae98.wildriftdictionary.data.Skill
 import com.taetae98.wildriftdictionary.databinding.DialogSkillBinding
 
-class SkillDialog(context: Context, private var skill: Skill) : BaseDialog<DialogSkillBinding>(context, R.layout.dialog_skill) {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
-    }
+class SkillDialog : BaseDialog<DialogSkillBinding>(R.layout.dialog_skill) {
+    private val args by navArgs<SkillDialogArgs>()
 
-    fun bind(skill: Skill) {
-        this.skill = skill
-        initSkill()
+    override fun onResume() {
+        super.onResume()
+        setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
     }
 
     override fun init() {
         super.init()
         initSkill()
+        setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
     }
 
     private fun initSkill() {
-        binding.skill = skill
+        binding.skill = args.skill
     }
 }
