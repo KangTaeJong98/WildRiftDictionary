@@ -14,7 +14,7 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/champion"
+            android:hint="@string/item"
             android:textColorHint="@color/onMain"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
