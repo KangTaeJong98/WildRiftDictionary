@@ -36,7 +36,6 @@ class ItemFragment : BaseFragment<FragmentChampionBinding>(R.layout.fragment_cha
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId) {
             R.id.search -> {
-                ItemSearchDialog(requireContext()).show()
             }
         }
 

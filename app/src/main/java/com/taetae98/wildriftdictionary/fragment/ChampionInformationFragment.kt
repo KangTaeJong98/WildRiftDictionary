@@ -5,7 +5,6 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.flexbox.FlexboxLayoutManager
 import com.google.android.flexbox.JustifyContent
-import com.taetae98.wildriftdictionary.ActivityMainNavigationXmlDirections
 import com.taetae98.wildriftdictionary.GridSpacingItemDecoration
 import com.taetae98.wildriftdictionary.R
 import com.taetae98.wildriftdictionary.adapter.*
@@ -48,6 +47,9 @@ class ChampionInformationFragment : BaseFragment<FragmentChampionInformationBind
         with(binding.itemRecyclerView) {
             adapter = ItemAdapter().apply {
                 submitList(args.champion.item)
+                onClick = {
+                    findNavController().navigate(ChampionInformationFragmentDirections.actionChampionInformationFragmentToItemDialog(it))
+                }
             }
             layoutManager = FlexboxLayoutManager(requireContext()).apply {
                 justifyContent = JustifyContent.CENTER
@@ -60,6 +62,9 @@ class ChampionInformationFragment : BaseFragment<FragmentChampionInformationBind
         with(binding.runeRecyclerView) {
             adapter = RuneAdapter().apply {
                 submitList(args.champion.rune)
+                onClick = {
+                    findNavController().navigate(ChampionInformationFragmentDirections.actionChampionInformationFragmentToRuneDialog(it))
+                }
             }
             layoutManager = FlexboxLayoutManager(requireContext()).apply {
                 justifyContent = JustifyContent.CENTER
@@ -72,6 +77,9 @@ class ChampionInformationFragment : BaseFragment<FragmentChampionInformationBind
         with(binding.spellRecyclerView) {
             adapter = SpellAdapter().apply {
                 submitList(args.champion.spell)
+                onClick = {
+                    findNavController().navigate(ChampionInformationFragmentDirections.actionChampionInformationFragmentToSpellDialog(it))
+                }
             }
             layoutManager = FlexboxLayoutManager(requireContext()).apply {
                 justifyContent = JustifyContent.CENTER
@@ -100,6 +108,9 @@ class ChampionInformationFragment : BaseFragment<FragmentChampionInformationBind
         with(binding.skillRecyclerView) {
             adapter = SkillAdapter().apply {
                 submitList(args.champion.skill)
+                onClick = {
+                    findNavController().navigate(ChampionInformationFragmentDirections.actionChampionInformationFragmentToSkillDialog(it))
+                }
             }
             layoutManager = FlexboxLayoutManager(requireContext()).apply {
                 justifyContent = JustifyContent.CENTER
@@ -110,7 +121,7 @@ class ChampionInformationFragment : BaseFragment<FragmentChampionInformationBind
 
     private fun initOnUniverse() {
         binding.setOnUniverse {
-            findNavController().navigate(ActivityMainNavigationXmlDirections.actionGlobalWebViewFragment("https://universe.leagueoflegends.com/${LocaleManager.getLoLLocale()}/champion/${args.champion.nameEn.toLowerCase(Locale.ROOT)}"))
+            findNavController().navigate(ChampionInformationFragmentDirections.actionChampionInformationFragmentToWebViewFragment("https://universe.leagueoflegends.com/${LocaleManager.getLoLLocale()}/champion/${args.champion.nameEn.toLowerCase(Locale.ROOT)}"))
         }
     }
 }

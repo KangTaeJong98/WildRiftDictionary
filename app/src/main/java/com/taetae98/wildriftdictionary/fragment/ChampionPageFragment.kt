@@ -1,5 +1,6 @@
 package com.taetae98.wildriftdictionary.fragment
 
+import androidx.navigation.fragment.findNavController
 import com.taetae98.wildriftdictionary.R
 import com.taetae98.wildriftdictionary.adapter.ChampionAdapter
 import com.taetae98.wildriftdictionary.base.BaseFragment
@@ -11,7 +12,11 @@ class ChampionPageFragment : BaseFragment<FragmentChampionPageBinding>(R.layout.
         retainInstance = true
     }
 
-    private val championAdapter by lazy { ChampionAdapter() }
+    private val championAdapter by lazy { ChampionAdapter().apply {
+        onClick = {
+            findNavController().navigate(ChampionFragmentDirections.actionChampionFragmentToChampionInformationFragment(it))
+        }
+    } }
 
     override fun init() {
         super.init()

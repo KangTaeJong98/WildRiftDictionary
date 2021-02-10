@@ -1,5 +1,6 @@
 package com.taetae98.wildriftdictionary.fragment
 
+import androidx.navigation.findNavController
 import com.taetae98.wildriftdictionary.R
 import com.taetae98.wildriftdictionary.adapter.NewsAdapter
 import com.taetae98.wildriftdictionary.base.BaseFragment
@@ -23,6 +24,9 @@ class NewsFragment : BaseFragment<FragmentMainBinding>(R.layout.fragment_main) {
         with(binding.recyclerView) {
             adapter = NewsAdapter().apply {
                 submitList(data.news)
+                onClick = {
+                    findNavController().navigate(NewsFragmentDirections.actionNewsFragmentToWebViewFragment(it.url))
+                }
             }
         }
     }
