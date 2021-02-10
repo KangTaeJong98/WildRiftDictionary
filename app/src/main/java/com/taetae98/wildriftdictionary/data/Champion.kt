@@ -18,8 +18,22 @@ data class Champion(
 ) : Serializable {
     private val document by lazy { runBlocking(Dispatchers.IO) { try { Jsoup.connect(informationURL).get() } catch (e: Exception) { e.printStackTrace(); Jsoup.parse("") } } }
 
-    val cost by lazy { "" }
-    val wildCore by lazy { "" }
+    val cost: String by lazy {
+        try {
+            document.getElementsByClass("wildrift-detail__cost").first().child(0).child(1).text()
+        } catch (e: Exception) {
+            e.printStackTrace()
+            ""
+        }
+    }
+    val wildCore: String by lazy {
+        try {
+            document.getElementsByClass("wildrift-detail__cost").first().child(1).child(1).text()
+        } catch (e: Exception) {
+            e.printStackTrace()
+            ""
+        }
+    }
     val ability: List<Ability> by lazy {
         try {
             ArrayList<Ability>().apply {

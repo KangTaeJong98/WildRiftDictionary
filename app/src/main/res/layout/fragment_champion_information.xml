@@ -3,11 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
-            name="title"
-            type="String" />
-        <variable
-            name="imageURL"
-            type="String" />
+            name="champion"
+            type="com.taetae98.wildriftdictionary.data.Champion" />
+
         <variable
             name="onUniverse"
             type="android.view.View.OnClickListener" />
@@ -20,7 +18,7 @@
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/toolbar"
-            app:title="@{title}"
+            app:title="@{champion.nameLocale}"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             app:layout_constraintTop_toTopOf="parent"
@@ -40,7 +38,7 @@
 
                 <ImageView
                     android:id="@+id/image"
-                    app:imageURL="@{imageURL}"
+                    app:imageURL="@{champion.splashImageURL}"
                     android:adjustViewBounds="true"
                     android:contentDescription="@string/image"
                     android:layout_width="match_parent"
@@ -49,13 +47,62 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"/>
 
+                <LinearLayout
+                    android:id="@+id/cost_linear_layout"
+                    android:orientation="horizontal"
+                    android:background="@color/sub"
+                    android:layout_margin="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/image"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent">
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="20dp"
+                        android:layout_margin="10dp"
+                        android:layout_weight="1"
+                        android:contentDescription="@string/image"
+                        android:src="@drawable/ic_cost" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:text="@{champion.cost, default=1000}"
+                        android:textColor="#FF0AE1FB"
+                        android:textStyle="bold"
+                        android:textSize="18sp"
+                        android:gravity="center"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent" />
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="20dp"
+                        android:layout_margin="10dp"
+                        android:layout_weight="1"
+                        android:contentDescription="@string/image"
+                        android:src="@drawable/ic_wild_core" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:text="@{champion.wildCore, default=1000}"
+                        android:textColor="#FFFFFF"
+                        android:textStyle="bold"
+                        android:textSize="18sp"
+                        android:gravity="center"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent" />
+
+                </LinearLayout>
+
                 <com.google.android.material.card.MaterialCardView
                     style="@style/CardStyle"
                     android:id="@+id/recommend_item_card_view"
                     android:layout_margin="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@id/image"
+                    app:layout_constraintTop_toBottomOf="@id/cost_linear_layout"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent">
                     <androidx.constraintlayout.widget.ConstraintLayout

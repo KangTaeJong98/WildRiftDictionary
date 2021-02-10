@@ -20,9 +20,8 @@ class ChampionInformationFragment : BaseFragment<FragmentChampionInformationBind
 
     override fun init() {
         super.init()
-        initCollapsingToolbar()
         initSupportActionBar()
-        initImageView()
+        initChampion()
         initItemRecyclerView()
         initRuneRecyclerView()
         initSpellRecyclerView()
@@ -32,16 +31,14 @@ class ChampionInformationFragment : BaseFragment<FragmentChampionInformationBind
         initOnUniverse()
     }
 
-    private fun initCollapsingToolbar() {
-        binding.title = args.champion.nameLocale
-    }
+
 
     private fun initSupportActionBar() {
         setSupportActionBar(binding.toolbar)
     }
 
-    private fun initImageView() {
-        binding.imageURL = args.champion.splashImageURL
+    private fun initChampion() {
+        binding.champion = args.champion
     }
 
     private fun initItemRecyclerView() {
