@@ -9,7 +9,11 @@
         android:id="@+id/newsFragment"
         android:name="com.taetae98.wildriftdictionary.fragment.NewsFragment"
         android:label="@string/news"
-        tools:layout="@layout/fragment_main"/>
+        tools:layout="@layout/fragment_main">
+        <action
+            android:id="@+id/action_newsFragment_to_webViewFragment"
+            app:destination="@id/webViewFragment" />
+    </fragment>
     <fragment
         android:id="@+id/webViewFragment"
         android:name="com.taetae98.wildriftdictionary.fragment.WebViewFragment"
@@ -23,6 +27,12 @@
         android:name="com.taetae98.wildriftdictionary.fragment.ChampionFragment"
         android:label="@string/champion"
         tools:layout="@layout/fragment_champion">
+        <action
+            android:id="@+id/action_championFragment_to_championSearchDialog"
+            app:destination="@id/championSearchDialog" />
+        <action
+            android:id="@+id/action_championFragment_to_championInformationFragment"
+            app:destination="@id/championInformationFragment" />
     </fragment>
 
     <fragment
@@ -32,13 +42,22 @@
         <argument
             android:name="champion"
             app:argType="com.taetae98.wildriftdictionary.data.Champion" />
+        <action
+            android:id="@+id/action_championInformationFragment_to_webViewFragment"
+            app:destination="@id/webViewFragment" />
+        <action
+            android:id="@+id/action_championInformationFragment_to_itemDialog"
+            app:destination="@id/itemDialog" />
+        <action
+            android:id="@+id/action_championInformationFragment_to_spellDialog"
+            app:destination="@id/spellDialog" />
+        <action
+            android:id="@+id/action_championInformationFragment_to_skillDialog"
+            app:destination="@id/skillDialog" />
+        <action
+            android:id="@+id/action_championInformationFragment_to_runeDialog"
+            app:destination="@id/runeDialog" />
     </fragment>
-    <action
-        android:id="@+id/action_global_webViewFragment"
-        app:destination="@id/webViewFragment" />
-    <action
-        android:id="@+id/action_global_championInformationFragment"
-        app:destination="@id/championInformationFragment" />
     <fragment
         android:id="@+id/itemFragment"
         android:name="com.taetae98.wildriftdictionary.fragment.ItemFragment"
@@ -49,4 +68,49 @@
         android:name="com.taetae98.wildriftdictionary.fragment.RuneFragment"
         android:label="@string/rune"
         tools:layout="@layout/fragment_rune"/>
+    <dialog
+        android:id="@+id/championSearchDialog"
+        android:name="com.taetae98.wildriftdictionary.dialog.ChampionSearchDialog"
+        android:label="ChampionSearchDialogFragment"
+        tools:layout="@layout/dialog_champion_search">
+        <action
+            android:id="@+id/action_championSearchDialog_to_championInformationFragment"
+            app:destination="@id/championInformationFragment" />
+    </dialog>
+    <dialog
+        android:id="@+id/itemDialog"
+        android:name="com.taetae98.wildriftdictionary.dialog.ItemDialog"
+        android:label="ItemDialog"
+        tools:layout="@layout/dialog_item">
+        <argument
+            android:name="item"
+            app:argType="com.taetae98.wildriftdictionary.data.Item" />
+    </dialog>
+    <dialog
+        android:id="@+id/runeDialog"
+        android:name="com.taetae98.wildriftdictionary.dialog.RuneDialog"
+        android:label="RuneDialog"
+        tools:layout="@layout/dialog_rune">
+        <argument
+            android:name="rune"
+            app:argType="com.taetae98.wildriftdictionary.data.Rune" />
+    </dialog>
+    <dialog
+        android:id="@+id/skillDialog"
+        android:name="com.taetae98.wildriftdictionary.dialog.SkillDialog"
+        android:label="SkillDialog"
+        tools:layout="@layout/dialog_skill">
+        <argument
+            android:name="skill"
+            app:argType="com.taetae98.wildriftdictionary.data.Skill" />
+    </dialog>
+    <dialog
+        android:id="@+id/spellDialog"
+        android:name="com.taetae98.wildriftdictionary.dialog.SpellDialog"
+        android:label="SpellDialog"
+        tools:layout="@layout/dialog_spell">
+        <argument
+            android:name="spell"
+            app:argType="com.taetae98.wildriftdictionary.data.Spell" />
+    </dialog>
 </navigation>
