@@ -8,12 +8,13 @@ import com.taetae98.wildriftdictionary.base.BaseAdapter
 import com.taetae98.wildriftdictionary.base.BaseHolder
 import com.taetae98.wildriftdictionary.data.Item
 import com.taetae98.wildriftdictionary.databinding.HolderItemBinding
-import com.taetae98.wildriftdictionary.dialog.ItemDialog
 
 class ItemAdapter : BaseAdapter<Item>(ItemItemCallback()) {
     init {
         setHasStableIds(true)
     }
+
+    var onClick: ((item: Item) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseHolder<out ViewDataBinding, Item> {
         return ItemHolder(HolderItemBinding.inflate(LayoutInflater.from(parent.context), parent, false))
@@ -22,9 +23,10 @@ class ItemAdapter : BaseAdapter<Item>(ItemItemCallback()) {
     inner class ItemHolder(binding: HolderItemBinding) : BaseHolder<HolderItemBinding, Item>(binding) {
         init {
             binding.setOnClick {
-                ItemDialog(context, element).show()
+                onClick?.invoke(element)
             }
         }
+
         override fun bind(element: Item) {
             super.bind(element)
             binding.item = element

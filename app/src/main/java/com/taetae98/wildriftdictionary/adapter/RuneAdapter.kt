@@ -8,13 +8,14 @@ import com.taetae98.wildriftdictionary.base.BaseAdapter
 import com.taetae98.wildriftdictionary.base.BaseHolder
 import com.taetae98.wildriftdictionary.data.Rune
 import com.taetae98.wildriftdictionary.databinding.HolderRuneBinding
-import com.taetae98.wildriftdictionary.dialog.RuneDialog
 
 class RuneAdapter : BaseAdapter<Rune>(RuneItemCallback()) {
     init {
         setHasStableIds(true)
     }
 
+    var onClick: ((rune: Rune) -> Unit)? = null
+    
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseHolder<out ViewDataBinding, Rune> {
         return RuneHolder(HolderRuneBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
@@ -22,7 +23,7 @@ class RuneAdapter : BaseAdapter<Rune>(RuneItemCallback()) {
     inner class RuneHolder(binding: HolderRuneBinding) : BaseHolder<HolderRuneBinding, Rune>(binding) {
         init {
             binding.setOnClick {
-                RuneDialog(context, element).show()
+                onClick?.invoke(element)
             }
         }
 

@@ -8,12 +8,13 @@ import com.taetae98.wildriftdictionary.base.BaseAdapter
 import com.taetae98.wildriftdictionary.base.BaseHolder
 import com.taetae98.wildriftdictionary.data.Spell
 import com.taetae98.wildriftdictionary.databinding.HolderSpellBinding
-import com.taetae98.wildriftdictionary.dialog.SpellDialog
 
 class SpellAdapter : BaseAdapter<Spell>(SpellItemCallback()) {
     init {
         setHasStableIds(true)
     }
+
+    var onClick: ((spell: Spell) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseHolder<out ViewDataBinding, Spell> {
         return SpellHolder(HolderSpellBinding.inflate(LayoutInflater.from(parent.context), parent, false))
@@ -22,9 +23,10 @@ class SpellAdapter : BaseAdapter<Spell>(SpellItemCallback()) {
     inner class SpellHolder(binding: HolderSpellBinding) : BaseHolder<HolderSpellBinding, Spell>(binding) {
         init {
             binding.setOnClick {
-                SpellDialog(context, element).show()
+                onClick?.invoke(element)
             }
         }
+
         override fun bind(element: Spell) {
             super.bind(element)
             binding.spell = element
