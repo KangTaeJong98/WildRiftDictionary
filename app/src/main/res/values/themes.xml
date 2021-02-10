@@ -24,6 +24,7 @@
 
     <style name="NavigationStyle" parent="Widget.Design.NavigationView">
         <item name="itemTextColor">@color/onMain</item>
+        <item name="itemIconTint">@color/onMain</item>
         <item name="android:background">@color/main</item>
     </style>
 </resources>
