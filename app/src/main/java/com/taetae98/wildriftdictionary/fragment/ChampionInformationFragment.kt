@@ -17,6 +17,7 @@ import java.util.*
 class ChampionInformationFragment : BaseFragment<FragmentChampionInformationBinding>(R.layout.fragment_champion_information) {
     private val args by navArgs<ChampionInformationFragmentArgs>()
     private val spacingItemDecoration by lazy { GridSpacingItemDecoration(1, 10.toDp(), RecyclerView.HORIZONTAL) }
+
     override fun init() {
         super.init()
         initCollapsingToolbar()

@@ -50,7 +50,7 @@
                     app:layout_constraintEnd_toEndOf="parent"/>
 
                 <com.google.android.material.card.MaterialCardView
-                    style="@style/RecommendCardStyle"
+                    style="@style/CardStyle"
                     android:id="@+id/recommend_item_card_view"
                     android:layout_margin="10dp"
                     android:layout_width="match_parent"
@@ -63,7 +63,7 @@
                         android:layout_height="wrap_content">
 
                         <com.google.android.material.textview.MaterialTextView
-                            style="@style/RecommendTitleTextStyle"
+                            style="@style/CardTitleTextStyle"
                             android:id="@+id/recommend_item_text_view"
                             android:text="@string/recommend_items"
                             android:layout_margin="10dp"
@@ -87,7 +87,7 @@
                 </com.google.android.material.card.MaterialCardView>
 
                 <com.google.android.material.card.MaterialCardView
-                    style="@style/RecommendCardStyle"
+                    style="@style/CardStyle"
                     android:id="@+id/recommend_rune_card_view"
                     android:layout_margin="10dp"
                     android:layout_width="match_parent"
@@ -100,7 +100,7 @@
                         android:layout_height="wrap_content">
 
                         <com.google.android.material.textview.MaterialTextView
-                            style="@style/RecommendTitleTextStyle"
+                            style="@style/CardTitleTextStyle"
                             android:id="@+id/recommend_rune_text_view"
                             android:text="@string/recommend_rune"
                             android:layout_margin="10dp"
@@ -125,7 +125,7 @@
                 </com.google.android.material.card.MaterialCardView>
 
                 <com.google.android.material.card.MaterialCardView
-                    style="@style/RecommendCardStyle"
+                    style="@style/CardStyle"
                     android:id="@+id/recommend_spell_card_view"
                     android:layout_margin="10dp"
                     android:layout_width="match_parent"
@@ -137,7 +137,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
                         <com.google.android.material.textview.MaterialTextView
-                            style="@style/RecommendTitleTextStyle"
+                            style="@style/CardTitleTextStyle"
                             android:id="@+id/recommend_spell_text_view"
                             android:text="@string/recommend_spell"
                             android:layout_margin="10dp"
@@ -161,7 +161,7 @@
                 </com.google.android.material.card.MaterialCardView>
 
                 <com.google.android.material.card.MaterialCardView
-                    style="@style/RecommendCardStyle"
+                    style="@style/CardStyle"
                     android:id="@+id/ability_card_view"
                     android:layout_margin="10dp"
                     android:layout_width="match_parent"
@@ -174,7 +174,7 @@
                         android:layout_height="wrap_content">
 
                         <com.google.android.material.textview.MaterialTextView
-                            style="@style/RecommendTitleTextStyle"
+                            style="@style/CardTitleTextStyle"
                             android:id="@+id/ability_text_view"
                             android:text="@string/ability"
                             android:layout_margin="10dp"
@@ -200,7 +200,7 @@
                 </com.google.android.material.card.MaterialCardView>
 
                 <com.google.android.material.card.MaterialCardView
-                    style="@style/RecommendCardStyle"
+                    style="@style/CardStyle"
                     android:id="@+id/sub_ability_card_view"
                     android:layout_margin="10dp"
                     android:layout_width="match_parent"
@@ -212,7 +212,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
                         <TextView
-                            style="@style/RecommendTitleTextStyle"
+                            style="@style/CardTitleTextStyle"
                             android:id="@+id/sub_ability_text_view"
                             android:text="@string/sub_ability"
                             android:layout_margin="10dp"
@@ -237,7 +237,7 @@
                 </com.google.android.material.card.MaterialCardView>
 
                 <com.google.android.material.card.MaterialCardView
-                    style="@style/RecommendCardStyle"
+                    style="@style/CardStyle"
                     android:id="@+id/skill_card_view"
                     android:layout_margin="10dp"
                     android:layout_width="match_parent"
@@ -249,7 +249,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
                         <TextView
-                            style="@style/RecommendTitleTextStyle"
+                            style="@style/CardTitleTextStyle"
                             android:id="@+id/skill_text_view"
                             android:text="@string/skill"
                             android:layout_margin="10dp"
