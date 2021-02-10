@@ -14,4 +14,8 @@
     <string name="ability">Ability</string>
     <string name="sub_ability">Sub Ability</string>
     <string name="skill">Skill</string>
+    <string name="upgraded_item">Upgraded Item</string>
+    <string name="mid_item">Mid Item</string>
+    <string name="enchantment_item">Enchantment Item</string>
+    <string name="basic_item">Basic Item</string>
 </resources>

@@ -62,12 +62,23 @@
         android:id="@+id/itemFragment"
         android:name="com.taetae98.wildriftdictionary.fragment.ItemFragment"
         android:label="@string/item"
-        tools:layout="@layout/fragment_item"/>
+        tools:layout="@layout/fragment_item">
+        <action
+            android:id="@+id/action_itemFragment_to_itemDialog"
+            app:destination="@id/itemDialog" />
+        <action
+            android:id="@+id/action_itemFragment_to_itemSearchDialog"
+            app:destination="@id/itemSearchDialog" />
+    </fragment>
     <fragment
         android:id="@+id/runeFragment"
         android:name="com.taetae98.wildriftdictionary.fragment.RuneFragment"
         android:label="@string/rune"
-        tools:layout="@layout/fragment_rune"/>
+        tools:layout="@layout/fragment_rune">
+        <action
+            android:id="@+id/action_runeFragment_to_runeDialog"
+            app:destination="@id/runeDialog" />
+    </fragment>
     <dialog
         android:id="@+id/championSearchDialog"
         android:name="com.taetae98.wildriftdictionary.dialog.ChampionSearchDialog"
@@ -112,5 +123,14 @@
         <argument
             android:name="spell"
             app:argType="com.taetae98.wildriftdictionary.data.Spell" />
+    </dialog>
+    <dialog
+        android:id="@+id/itemSearchDialog"
+        android:name="com.taetae98.wildriftdictionary.dialog.ItemSearchDialog"
+        android:label="ItemSearchDialog"
+        tools:layout="@layout/dialog_item_search">
+        <action
+            android:id="@+id/action_itemSearchDialog_to_itemDialog"
+            app:destination="@id/itemDialog" />
     </dialog>
 </navigation>
