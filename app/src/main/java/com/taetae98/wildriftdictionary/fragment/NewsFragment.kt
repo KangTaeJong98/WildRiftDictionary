@@ -25,7 +25,7 @@ class NewsFragment : BaseFragment<FragmentMainBinding>(R.layout.fragment_main) {
             adapter = NewsAdapter().apply {
                 submitList(data.news)
                 onClick = {
-                    findNavController().navigate(NewsFragmentDirections.actionNewsFragmentToWebViewFragment(it.url))
+                    findNavController().navigate(NewsFragmentDirections.actionNewsFragmentToWebViewFragment(it.url, getString(R.string.news)))
                 }
             }
         }

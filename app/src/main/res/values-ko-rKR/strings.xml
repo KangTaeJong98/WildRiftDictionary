@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">WildRift Dictionary</string>
-    <string name="news">뉴스</string>
+    <string name="news">공지사항</string>
     <string name="image">이미지</string>
     <string name="champion">챔피언</string>
     <string name="search">검색</string>
@@ -23,4 +23,5 @@
     <string name="domination">지배</string>
     <string name="resolve">결의</string>
     <string name="inspiration">영감</string>
+    <string name="universe">유니버스</string>
 </resources>

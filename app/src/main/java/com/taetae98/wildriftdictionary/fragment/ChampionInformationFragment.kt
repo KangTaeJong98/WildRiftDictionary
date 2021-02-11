@@ -119,7 +119,7 @@ class ChampionInformationFragment : BaseFragment<FragmentChampionInformationBind
 
     private fun initOnUniverse() {
         binding.setOnUniverse {
-            findNavController().navigate(ChampionInformationFragmentDirections.actionChampionInformationFragmentToWebViewFragment("https://universe.leagueoflegends.com/${LocaleManager.getLoLLocale()}/champion/${args.champion.nameEn.toLowerCase(Locale.ROOT)}"))
+            findNavController().navigate(ChampionInformationFragmentDirections.actionChampionInformationFragmentToWebViewFragment("https://universe.leagueoflegends.com/${LocaleManager.getLoLLocale()}/champion/${args.champion.nameEn.toLowerCase(Locale.ROOT)}", "${args.champion.nameLocale} ${getString(R.string.universe)}"))
         }
     }
 }

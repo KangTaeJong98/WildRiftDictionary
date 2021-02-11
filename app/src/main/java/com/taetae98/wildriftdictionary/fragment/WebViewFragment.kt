@@ -18,6 +18,7 @@ class WebViewFragment : BaseFragment<FragmentWebViewBinding>(R.layout.fragment_w
     }
 
     private fun initSupportActionBar() {
+        binding.title = args.title
         setSupportActionBar(binding.toolbar)
     }
 
